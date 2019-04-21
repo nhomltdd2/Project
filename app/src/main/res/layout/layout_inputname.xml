@@ -19,7 +19,7 @@
         <!--android:layout_above="@+id/btnStart">-->
 
         <EditText
-            android:id="@+id/inputText"
+            android:id="@+id/edtName"
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_marginTop="200dp"
