@@ -65,7 +65,8 @@
             android:id="@+id/btnPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chơi lại"
+            android:fontFamily="sans-serif-medium"
+            android:text="CHƠI LẠI"
             android:textSize="35dp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/colorAccent"/>

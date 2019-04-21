@@ -1,19 +1,23 @@
 package com.example.project.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import com.example.project.Common.Common;
 import com.example.project.MainActivity;
+import com.example.project.PointActivity;
 
 public class GripViewSuggestAdapter extends BaseAdapter {
+    public int count = 1;
 
     private List<String> suggestSource;
     private Context context;
@@ -41,7 +45,7 @@ public class GripViewSuggestAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         Button button;
         if (convertView == null) {
             if (suggestSource.get(position).equals("null")) {
@@ -82,11 +86,20 @@ public class GripViewSuggestAdapter extends BaseAdapter {
                     }
                     //esle
                     else {
+//                        count++;
+//                        if (count > 3) {
+//                            Intent intent = new Intent(parent.getContext(), PointActivity.class);
+//                            context.startActivity(intent);
+//                            Toast.makeText(parent.getContext(), "You have 0 trial left, Move to POINT!", Toast.LENGTH_SHORT).show();
+//                        }
+                        Toast.makeText(parent.getContext(), "Your answer is incorrect", Toast.LENGTH_SHORT).show();
+
                         //Remove from suggest source
                         mainActivity.suggestSource.set(position, " ");
                         mainActivity.suggestAdapter = new GripViewSuggestAdapter(mainActivity.suggestSource, context, mainActivity);
                         mainActivity.gripViewSuggest.setAdapter(mainActivity.suggestAdapter);
                         mainActivity.suggestAdapter.notifyDataSetChanged();
+
                     }
                 }
             });
