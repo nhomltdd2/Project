@@ -37,6 +37,8 @@ import com.example.project.Adapter.GripViewAnswerAdapter;
 import com.example.project.Adapter.GripViewSuggestAdapter;
 import com.example.project.Common.Common;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView txt_coin;
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     public GripViewSuggestAdapter suggestAdapter;
 
     public Button btnSubmit, btnTranfer;
+
+    public TextView counter;
 
     public GridView gripViewAnswer, gripViewSuggest;
 
@@ -117,30 +121,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //timer
-    public void time(Menu menu) {
-        final MenuItem counter = menu.findItem(R.id.counter);
-        new CountDownTimer(timer, 1000) {
+    CountDownTimer time = new CountDownTimer(timer, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                long millis = millisUntilFinished;
-                String hms = (TimeUnit.MILLISECONDS.toHours(millis)) + ":" + (TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis))) + ":" + (TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+        public void onTick(long millisUntilFinished) {
+            long millis = millisUntilFinished;
+            String hms = (TimeUnit.MILLISECONDS.toHours(millis)) + ":" + (TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis))) + ":" + (TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
 
-                counter.setTitle(hms);
-                timer = millis;
-            }
+            counter.setText(hms);
+            timer = millis;
+        }
 
-            @Override
-            public void onFinish() {
-                counter.setTitle("Your time is up!");
-                intent = new Intent(MainActivity.this, PointActivity.class);
-                //truyền dữ liệu điểm
-                Bundle bundle = new Bundle();
-                bundle.putString(POINT, txt_coin.getText().toString());
-                intent.putExtra(BUNDLE, bundle);
-                startActivity(intent);
-            }
-        }.start();
-    }
+        @Override
+        public void onFinish() {
+            counter.setText("Your time is up!");
+            intent = new Intent(MainActivity.this, PointActivity.class);
+            //truyền dữ liệu điểm
+            Bundle bundle = new Bundle();
+            bundle.putString(POINT, txt_coin.getText().toString());
+            intent.putExtra(BUNDLE, bundle);
+            startActivity(intent);
+        }
+    };
 
     //create menu
     @Override
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
-        time(menu);
+        time.start();
 
         return true;
     }
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        counter = (TextView) findViewById(R.id.timer);
         gripViewAnswer = (GridView) findViewById(R.id.gripViewAnswer);
         gripViewSuggest = (GridView) findViewById(R.id.gripViewSuggest);
 
@@ -226,7 +228,11 @@ public class MainActivity extends AppCompatActivity {
                                     gripViewSuggest.setAdapter(suggestAdapter);
                                     suggestAdapter.notifyDataSetChanged();
 
+                                    time.cancel();
+                                    time.start();
+
                                     setupList();
+
                                 }
                             });
 
@@ -249,7 +255,6 @@ public class MainActivity extends AppCompatActivity {
 
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
-
                 } else {
                     Toast.makeText(MainActivity.this, "Your answer is incorrect, you have " + 1 + " trial left", Toast.LENGTH_SHORT).show();
                 }
