@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project.data.DBManager;
+
 import java.util.ArrayList;
 
 public class RankActivity extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class RankActivity extends AppCompatActivity {
     private static ArrayList<DataModel> data;
     static View.OnClickListener myOnClickListener;
     private static ArrayList<Integer> removedItems;
-    Button btnPlay;
+    Button btnPlay,btnClear,btnInsertMau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,8 @@ public class RankActivity extends AppCompatActivity {
         setContentView(R.layout.layout_rank);
 
         myOnClickListener = new MyOnClickListener(this);
-
+        btnClear = (Button)findViewById(R.id.btnClear);
+        btnInsertMau = (Button)findViewById(R.id.btnInsertMau);
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
 
@@ -43,14 +46,16 @@ public class RankActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         data = new ArrayList<DataModel>();
-        for (int i = 0; i < MyData.nameArray.length; i++) {
-            data.add(new DataModel(
-                    MyData.nameArray[i],
-                    MyData.versionArray[i],
-                    MyData.id_[i]
-
-            ));
-        }
+        DBManager dbManager = new DBManager(this);
+        dbManager.get_all_players(data);
+//        for (int i = 0; i < MyData.nameArray.length; i++) {
+//            data.add(new DataModel(
+//                    MyData.nameArray[i],
+//                    MyData.versionArray[i],
+//                    MyData.id_[i]
+//
+//            ));
+//        }
 
         removedItems = new ArrayList<Integer>();
 
@@ -64,6 +69,24 @@ public class RankActivity extends AppCompatActivity {
                 intent = new Intent(RankActivity.this, MainActivity.class);
                 intent.setFlags(intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
+            }
+        });
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // thy: chỗ này là gọi hàm xóa trắng database, sau này đóng lại
+                DBManager db = new DBManager(RankActivity.this);
+                db.clear_all();
+                Toast.makeText(RankActivity.this, "Đã reset db", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnInsertMau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // thy: chỗ này là gọi hàm insert dữ liệu mẫu, sau này đóng lại
+                DBManager db = new DBManager(RankActivity.this);
+                db.insert_du_lieu_mau();
+                Toast.makeText(RankActivity.this, "Đã insert dữ liệu mẫu", Toast.LENGTH_SHORT).show();
             }
         });
     }

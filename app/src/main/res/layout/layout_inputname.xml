@@ -37,6 +37,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:background="@drawable/radius"
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

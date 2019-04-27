@@ -9,9 +9,8 @@ import android.widget.Button;
 public class StartGame extends AppCompatActivity {
 
     private Button btnBatDau;
-    private Button btnHuongDan;
     private Button btnXepHang;
-    private Button btnChedo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +18,8 @@ public class StartGame extends AppCompatActivity {
         setContentView(R.layout.start);
 
         btnBatDau = (Button) findViewById(R.id.btnBatDau);
-        btnHuongDan = (Button) findViewById(R.id.btnHuongDan);
         btnXepHang = (Button) findViewById(R.id.btnXepHang);
-        btnChedo = (Button) findViewById(R.id.btnChedo);
+
 
         btnBatDau.setOnClickListener(new View.OnClickListener() {
             @Override
