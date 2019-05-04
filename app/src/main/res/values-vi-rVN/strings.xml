@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Đồ án</string>
+    <string name="start">Bắt đầu</string>
+    <string name="mode">Độ khó</string>
+    <string name="hight">Điểm cao</string>
+    <string name="rank">Xếp hạng</string>
+    <string name="name">Tên</string>
+    <string name="guide">Hướng dẫn</string>
+    <string name="next">Tiếp tục</string>
+    <string name="again">Chơi lại</string>
+    <string name="delete_db">Xóa DB</string>
+    <string name="insert_mau">Nhập mẫu</string>
+    <string name="submit">Xong</string>
+</resources>

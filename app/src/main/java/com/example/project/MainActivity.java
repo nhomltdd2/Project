@@ -3,6 +3,7 @@ package com.example.project;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -178,6 +180,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void ganNgonNgu(String laguage){
+        Locale locale = new Locale(laguage);
+
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(
+                config,
+                getBaseContext().getResources().getDisplayMetrics()
+        );
+        Intent inten = new Intent(MainActivity.this, MainActivity.class);
+        startActivity(inten);
+    }
     private void initView() {
         counter = (TextView) findViewById(R.id.timer);
         gripViewAnswer = (GridView) findViewById(R.id.gripViewAnswer);

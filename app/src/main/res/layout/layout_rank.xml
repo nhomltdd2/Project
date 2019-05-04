@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:text="CHƠI LẠI"
+            android:text="@string/again"
             android:textSize="35dp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/colorAccent"/>
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:text="XÓA TRẮNG DB"
+            android:text="@string/delete_db"
             android:textSize="35dp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/colorAccent"/>
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:text="INSERT MẪU"
+            android:text="@string/insert_mau"
             android:textSize="35dp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/colorAccent"/>

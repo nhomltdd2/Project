@@ -9,4 +9,10 @@
 <string name="rank">Rank</string>
 <string name="name">Name</string>
 <string name="guide">Guide</string>
+    <string name="submit">Submit</string>
+    <string name="next">Next</string>
+    <string name="again">Play again</string>
+    <string name="delete_db">Delete DB</string>
+    <string name="insert_mau">Insert Mau</string>
+    <string name="point">Point</string>
 </resources>

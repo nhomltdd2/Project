@@ -41,7 +41,7 @@
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"
+            android:text="@string/start"
             android:textSize="35dp"
             android:layout_marginBottom="15dp"
         android:textColor="@color/colorAccent"/>
