@@ -33,8 +33,6 @@ public class StartGame extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(StartGame.this, InputNameActivity.class);
                 startActivity(intent);
-
-
             }
         });
 
@@ -43,7 +41,6 @@ public class StartGame extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(StartGame.this, RankActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -60,27 +57,8 @@ public class StartGame extends AppCompatActivity {
                 ganNgonNgu("vi");
             }
         });
-
-//        btnHuongDan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(StartGame.this, Gui.class);
-//                startActivity(intent);
-//            }
-//        });
-
-//        btnLichSu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(StartGame.this, Mode.class);
-//                startActivity(intent);
-//            }
-//        });
-
-
-
-
     }
+
     public void ganNgonNgu(String language){
         Locale locale = new Locale(language);
 

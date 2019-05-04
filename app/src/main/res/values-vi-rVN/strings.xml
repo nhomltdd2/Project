@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Đồ án</string>
+    <string name="app_name">Game ĐUỔI HÌNH BẮT CHỮ</string>
     <string name="start">Bắt đầu</string>
     <string name="mode">Độ khó</string>
     <string name="hight">Điểm cao</string>
@@ -12,4 +12,5 @@
     <string name="delete_db">Xóa DB</string>
     <string name="insert_mau">Nhập mẫu</string>
     <string name="submit">Xong</string>
+    <string name="point">Điểm</string>
 </resources>

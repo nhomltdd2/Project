@@ -67,7 +67,7 @@ public class InputNameActivity extends AppCompatActivity {
     }
     private NamePlayer createNamePlayer(){
         String name = edtName.getText().toString();
-        NamePlayer namePlayer = new NamePlayer(name);
+        NamePlayer namePlayer = new NamePlayer(0,name,0);
         return namePlayer;
     }
 

@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">Project</string>
-<string name="start">Start</string>
+    <string name="app_name">GAME</string>
+    <string name="start">Start</string>
 
-<string name="mode">Mode</string>
+    <string name="mode">Mode</string>
 
-<string name="hight">Hight score</string>
+    <string name="hight">Hight score</string>
 
-<string name="rank">Rank</string>
-<string name="name">Name</string>
-<string name="guide">Guide</string>
+    <string name="rank">Rank</string>
+    <string name="name">Name</string>
+    <string name="guide">Guide</string>
     <string name="submit">Submit</string>
     <string name="next">Next</string>
     <string name="again">Play again</string>

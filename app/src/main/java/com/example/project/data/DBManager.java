@@ -44,6 +44,7 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(NAME, namePlayer.getmName());
+        values.put(SCORE, namePlayer.getmScore());
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
@@ -63,6 +64,8 @@ public class DBManager extends SQLiteOpenHelper {
         }
         db.close();
     }
+
+
 
     // thy: hàm này để insert dữ liệu mẫu test màn hình rank
     // sau này app chạy ok rồi thì đóng lại

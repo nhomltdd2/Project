@@ -38,6 +38,8 @@ import java.util.regex.Pattern;
 import com.example.project.Adapter.GripViewAnswerAdapter;
 import com.example.project.Adapter.GripViewSuggestAdapter;
 import com.example.project.Common.Common;
+import com.example.project.data.DBManager;
+import com.example.project.model.NamePlayer;
 
 import org.w3c.dom.Text;
 
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String POINT = "point";
 
     public static final String BUNDLE = "bundel";
+
+
+
     static Intent intent;
     public List<String> suggestSource = new ArrayList<>();
 
@@ -93,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
 
     MediaPlayer mp;
 
+    DBManager dbManager = new DBManager(this);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
         btnTranfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent = new Intent(MainActivity.this, PointActivity.class);
+                NamePlayer namePlayer = getScore();
+
+                dbManager.addName(namePlayer);
                 intent = new Intent(MainActivity.this, PointActivity.class);
                 //truyền dữ liệu điểm
                 Bundle bundle = new Bundle();
@@ -135,6 +147,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFinish() {
             counter.setText("Your time is up!");
+            intent = new Intent(MainActivity.this, PointActivity.class);
+            NamePlayer namePlayer = getScore();
+
+            dbManager.addName(namePlayer);
             intent = new Intent(MainActivity.this, PointActivity.class);
             //truyền dữ liệu điểm
             Bundle bundle = new Bundle();
@@ -192,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
         Intent inten = new Intent(MainActivity.this, MainActivity.class);
         startActivity(inten);
     }
+
     private void initView() {
         counter = (TextView) findViewById(R.id.timer);
         gripViewAnswer = (GridView) findViewById(R.id.gripViewAnswer);
@@ -255,6 +272,10 @@ public class MainActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                     Toast.makeText(MainActivity.this, "Go to Point now!", Toast.LENGTH_SHORT).show();
+
+                                    NamePlayer namePlayer = getScore();
+
+                                    dbManager.addName(namePlayer);
                                     intent = new Intent(MainActivity.this, PointActivity.class);
                                     //truyền dữ liệu điểm
                                     Bundle bundle = new Bundle();
@@ -305,6 +326,10 @@ public class MainActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                     Toast.makeText(MainActivity.this, "Go to Point now!", Toast.LENGTH_SHORT).show();
+
+                                    NamePlayer namePlayer = getScore();
+
+                                    dbManager.addName(namePlayer);
                                     intent = new Intent(MainActivity.this, PointActivity.class);
                                     //truyền dữ liệu điểm
                                     Bundle bundle = new Bundle();
@@ -375,6 +400,12 @@ public class MainActivity extends AppCompatActivity {
             result[i] = ' ';
         }
         return result;
+    }
+
+    private NamePlayer getScore(){
+        int score = txt_coin.getText().length();
+        NamePlayer namePlayer = new NamePlayer(0, "",score);
+        return namePlayer;
     }
 
 
