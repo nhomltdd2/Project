@@ -25,6 +25,10 @@ public class InputNameActivity extends AppCompatActivity {
     public Button btnStart;
     public EditText edtName;
 
+    public static final String NAME = "name";
+
+    public static final String BUNDLE = "bundel";
+
 
 
     MediaPlayer mp;
@@ -40,18 +44,19 @@ public class InputNameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String ed_text = edtName.getText().toString().trim();
-                NamePlayer namePlayer = createNamePlayer();
-
                 if(ed_text.isEmpty() || ed_text.length() == 0 || ed_text.equals("") || ed_text == null)
                 {
                     //EditText is empty
                     Toast.makeText(InputNameActivity.this, "You did not enter a username", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                else
-                {
-                    dbManager.addName(namePlayer);
+                else {
+                    /*dbManager.addName(namePlayer);*/
                     Intent intent = new Intent(InputNameActivity.this, MainActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(NAME, ed_text);
+                    intent.putExtra(BUNDLE, bundle);
+                    startActivity(intent);
                     intent.setFlags(intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
                 }
@@ -65,11 +70,7 @@ public class InputNameActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(drawable);
     }
-    private NamePlayer createNamePlayer(){
-        String name = edtName.getText().toString();
-        NamePlayer namePlayer = new NamePlayer(0,name,0);
-        return namePlayer;
-    }
+
 
     //create menu
     @Override
@@ -104,6 +105,4 @@ public class InputNameActivity extends AppCompatActivity {
         return true;
     }
 
-    private void initView() {
-    }
 }

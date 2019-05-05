@@ -5,15 +5,15 @@ public class DataModel {
 
 
     String name;
-    String rank;
+    String score;
     int id_;
 
     //thy: thêm hàm khởi tạo mặc định
     public DataModel( ) {
     }
-    public DataModel(String name, String rank, int id_ ) {
+    public DataModel(String name, String score, int id_ ) {
         this.name = name;
-        this.rank = rank;
+        this.score = score;
         this.id_ = id_;
 
     }
@@ -24,8 +24,8 @@ public class DataModel {
     }
 
 
-    public String getRank() {
-        return rank;
+    public String getScore() {
+        return score;
     }
 
 
@@ -38,8 +38,8 @@ public class DataModel {
         this.name = name;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setScore(String score) {
+        this.score = score;
     }
 
     public void setId_(int id_) {

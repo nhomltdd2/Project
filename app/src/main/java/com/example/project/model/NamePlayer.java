@@ -3,14 +3,18 @@ package com.example.project.model;
 public class NamePlayer {
     private int mID;
     private String mName;
-    private int mScore;
+    private String mScore;
 
-    public NamePlayer(int mID, String mName, int mScore) {
+    public NamePlayer(int mID, String mName, String mScore) {
         this.mID = mID;
         this.mName = mName;
         this.mScore = mScore;
     }
 
+    public NamePlayer(String mName ,String mScore) {
+        this.mName = mName;
+        this.mScore = mScore;
+    }
 
     public int getmID() {
         return mID;
@@ -28,11 +32,11 @@ public class NamePlayer {
         this.mName = mName;
     }
 
-    public int getmScore() {
+    public String getmScore() {
         return mScore;
     }
 
-    public void setmScore(int mScore) {
+    public void setmScore(String mScore) {
         this.mScore = mScore;
     }
 }

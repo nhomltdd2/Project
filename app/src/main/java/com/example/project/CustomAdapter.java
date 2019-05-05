@@ -52,7 +52,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         TextView textViewRank = holder.textViewRank;
 
         textViewName.setText(dataSet.get(listPosition).getName());
-        textViewRank.setText(dataSet.get(listPosition).getRank());
+        textViewRank.setText(dataSet.get(listPosition).getScore());
 
     }
 

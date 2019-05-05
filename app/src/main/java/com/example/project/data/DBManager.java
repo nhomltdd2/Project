@@ -43,6 +43,7 @@ public class DBManager extends SQLiteOpenHelper {
     public void addName(NamePlayer namePlayer){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(ID, namePlayer.getmID());
         values.put(NAME, namePlayer.getmName());
         values.put(SCORE, namePlayer.getmScore());
         db.insert(TABLE_NAME, null, values);
@@ -58,7 +59,7 @@ public class DBManager extends SQLiteOpenHelper {
                 DataModel data = new DataModel();
                 data.setId_(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
                 data.setName(cursor.getString(cursor.getColumnIndex("name")));
-                data.setRank(cursor.getString(cursor.getColumnIndex("score")));
+                data.setScore(cursor.getString(cursor.getColumnIndex("score")));
                 members.add(data);
             }while (cursor.moveToNext());
         }

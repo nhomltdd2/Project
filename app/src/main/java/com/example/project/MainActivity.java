@@ -46,14 +46,14 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     private TextView txt_coin;
-    private TextView txt_heart;
 
     private int coin = 0;
-    private int heart = 5;
 
     public static final String POINT = "point";
 
     public static final String BUNDLE = "bundel";
+
+    private TextView txt_Name;
 
 
 
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         imgViewQuestion = (ImageView) findViewById(R.id.imgLogo);
 
         txt_coin = (TextView) findViewById(R.id.txt_coin);
-        txt_heart = (TextView) findViewById(R.id.txt_avatar);
+        txt_Name = (TextView) findViewById(R.id.txt_name);
 
 
         //Add setup here
@@ -403,8 +403,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private NamePlayer getScore(){
-        int score = txt_coin.getText().length();
-        NamePlayer namePlayer = new NamePlayer(0, "",score);
+        intent = getIntent();
+        //lấy name
+        if (intent != null)
+        {
+            Bundle bundle = intent.getBundleExtra(InputNameActivity.BUNDLE);
+            if (bundle != null)
+            {
+                txt_Name.setText(bundle.getString(InputNameActivity.NAME));
+            }
+            else {
+                txt_Name.setText(intent.getStringExtra(InputNameActivity.NAME));
+            }
+        }
+        String name = txt_Name.getText().toString();
+        String score = txt_coin.getText().toString();
+
+        NamePlayer namePlayer = new NamePlayer(name,score);
         return namePlayer;
     }
 

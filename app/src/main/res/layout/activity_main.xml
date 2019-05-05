@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/heart"
-            android:id="@+id/txt_avatar"
+            android:id="@+id/txt_name"
             android:text="5"
             android:textSize="25sp"
             android:textColor="#000"
